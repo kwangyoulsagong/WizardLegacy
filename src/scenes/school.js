@@ -19,24 +19,24 @@ class school extends Phaser.Scene {
         this.bg.displayHeight=this.sys.canvas.height//캔버스 세로기리이만큼 설정
         this.pl=new Player(this)
         this.pl.body.collideWorldBounds=true
-        this.npcred=this.add.sprite(1000,200,"npcred")
+        this.npcred=new Npcred(this)
         this.npcred2=this.add.image(180,448,"npcred")
         this.npcred2.scale=0.75
-        this.npcgreen=this.add.image(300,200,"npcgreen")
+        this.npcgreen=new Npcgreen(this)
         this.npcgreen2=this.add.image(1275,448,"npcgreen")
         this.npcgreenblack2=this.add.image(1330,448,"npcgreenblack")
-        this.npcgreenblack=this.add.image(1000,500,"npcgreenblack")
-        this.npcredblack=this.add.image(100,750,"npcredblack")
-        this.npcredblack2=this.add.image(230,448,"npcredblack")
+        this.npcgreenblack=new Npcgreenblack(this)
+        this.npcredblack=new Npcredblack(this)
+        this.npcredblack2=this.add.sprite(230,448,"npcredblack")
         this.npcredblack2.scale=0.75
         this.npcredblack2.flipX=true
-        this.npcred.scale=0.75
         this.npcgreen2.scale=0.75
-        this.npcgreen.scale=0.75
-        this.npcgreenblack.scale=0.75
         this.npcgreenblack2.scale=0.75
         this.npcgreenblack2.flipX=true
-        this.npcredblack.scale=0.75
+        this.npcgreenblack.body.collideWorldBounds=true
+        this.npcgreen.body.collideWorldBounds=true
+        this.npcred.body.collideWorldBounds=true
+        this.npcredblack.body.collideWorldBounds=true
         this.cursor=this.input.keyboard.createCursorKeys()//키보드 입력시
         this.cameras.main.startFollow(this.pl)//카메라가 플레이어를 따라다님
         this.desk=this.add.image(1300,500,"desk")
@@ -46,8 +46,7 @@ class school extends Phaser.Scene {
         this.mage=new Mage(this)
         this.mage2=this.add.sprite(100,100,"mage")
         this.physics.add.collider(this.pl,this.mage,()=>{
-            this.pl.setVelocityX(0)
-        this.pl.setVelocityY(0)
+           this.pl.x=this.pl.x-1
 
         })
        
