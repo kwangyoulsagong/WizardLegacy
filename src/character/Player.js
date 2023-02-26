@@ -1,6 +1,6 @@
 
 class Player extends Phaser.Physics.Arcade.Sprite{
-    static player_movement=2
+    static player_movement=200
     constructor(scene){
         super(scene,Config.width/2,Config.height/2,"playerlevel1")
         this.scale=0.75
@@ -11,18 +11,18 @@ class Player extends Phaser.Physics.Arcade.Sprite{
     position(direction){
         switch(direction){
             case "left": 
-            this.x-=Player.player_movement
+            this.setVelocityX(-Player.player_movement)
             this.flipX=true
             break
             case "right": 
-            this.x+=Player.player_movement
+            this.setVelocityX(Player.player_movement)
             this.flipX=false
             break
             case "up": 
-            this.y-=Player.player_movement
+            this.setVelocityY(-Player.player_movement)
             break
             case "down": 
-            this.y+=Player.player_movement
+            this.setVelocityY(Player.player_movement)
             break
         }
     }
